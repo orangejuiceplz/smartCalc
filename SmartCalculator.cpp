@@ -8,7 +8,7 @@
 #include <string>
 
 #ifndef M_PI
-#define M_PI 3.14159265358979323846
+#define M_PI 3.14159265358979323846 // approximation for pi
 #endif
 
 class SmartCalculator {
@@ -27,27 +27,28 @@ public:
     double exponent(double base, double exp) { return pow(base, exp); }
 
     // Quadratic equation solver
-    void solveQuadratic(double a, double b, double c) {
-        double discriminant = b*b - 4*a*c;
-        double sqrt_val = sqrt(abs(discriminant));
+void solveQuadratic(double a, double b, double c) {
+    double discriminant = b*b - 4*a*c;
+    double sqrt_val = sqrt(abs(discriminant));
 
-        if (discriminant > 0) {
-            std::cout << "Roots are real and different \n";
-            std::cout << "Root 1 = " << (-b + sqrt_val) / (2*a) << "\n"
-                      << "Root 2 = " << (-b - sqrt_val) / (2*a) << "\n";
-        }
-        else if (discriminant == 0) {
-            std::cout << "Roots are real and same \n";
-            std::cout << "Root 1 = Root 2 =" << -b / (2*a) << "\n";
-        }
-        else {
-            std::cout << "Roots are complex \n";
-            std::cout << "Root 1 = " << -b / (2*a) << " + i" << sqrt_val << "\n"
-                      << "Root 2 = " << -b / (2*a) << " - i" << sqrt_val << "\n";
-        }
+    if (discriminant > 0) {
+        std::cout << "The roots are real and different. Solving for x:\n";
+        std::cout << "x1 = " << (-b + sqrt_val) / (2*a) << "\n";
+        std::cout << "x2 = " << (-b - sqrt_val) / (2*a) << "\n";
     }
+    else if (discriminant == 0) {
+        std::cout << "The roots are real and the same. Solving for x:\n";
+        std::cout << "x = " << -b / (2*a) << "\n"; // only one solution since the roots are equal
+    }
+    else {
+        std::cout << "The roots are complex. Solving for x:\n";
+        std::cout << "x1 = " << -b / (2*a) << " + i" << sqrt_val << "\n";
+        std::cout << "x2 = " << -b / (2*a) << " - i" << sqrt_val << "\n";
+    }
+}
 
-    // Angle conversion
+
+    // angle conversion built in with C++
     double degToRad(double deg) { return deg * (M_PI / 180.0); }
     double radToDeg(double rad) { return rad * (180.0 / M_PI); }
 
@@ -67,7 +68,7 @@ public:
         return sqrt(standardDeviation / n);
     }
 
-    // Simplify square root
+    // simplfying sqRTS
     void simplifySqrt(int n) {
         int outside_root = 1;
         int inside_root = n;
@@ -85,17 +86,17 @@ public:
         std::cout << "Simplified form: " << outside_root << " sqrt(" << inside_root << ")" << std::endl;
     }
 
-    // Trigonometric functions
+    // trig func c++
     double sine(double x) { return sin(x); }
     double cosine(double x) { return cos(x); }
     double tangent(double x) { return tan(x); }
 
-    // Logarithmic and exponential functions
+    // log and e^x
     double naturalLog(double x) { return log(x); }
     double logBase10(double x) { return log10(x); }
     double exp(double x) { return exp(x); }
 
-    // Complex numbers operations
+    // comp # oper
     std::complex<double> complexAdd(std::complex<double> a, std::complex<double> b) { return a + b; }
     std::complex<double> complexSubtract(std::complex<double> a, std::complex<double> b) { return a - b; }
     std::complex<double> complexMultiply(std::complex<double> a, std::complex<double> b) { return a * b; }
@@ -103,7 +104,7 @@ public:
     double complexMagnitude(std::complex<double> a) { return abs(a); }
     double complexArgument(std::complex<double> a) { return arg(a); }
 
-    // Statistical functions
+    // stat func
     double mean(std::vector<double> data) {
         double sum = std::accumulate(data.begin(), data.end(), 0.0);
         return sum / data.size();
@@ -144,7 +145,7 @@ public:
         return sq_sum / data.size() - mean_val * mean_val;
     }
 
-    // Number theory functions
+    // num theory
     bool isPrime(int n) {
         if(n <= 1)
             return false;
@@ -181,19 +182,20 @@ public:
         return factors;
     }
 
-    // Interactive operation runner
+    // operations runner
     void run() {
-        std::string operation;
-        double num1, num2;
+    std::string operation;
+    double num1, num2;
 
-        while (true) {
-            std::cout << "Enter operation (add, subtract, multiply, divide, exponent, quit): ";
-            std::cin >> operation;
+    while (true) {
+        std::cout << "Enter operation (add, subtract, multiply, divide, exponent, solveQuadratic, convertAngle, calculateStdDev, simplifySqrt, trigFunction, logExpFunction, complexOperation, statisticalFunction, numberTheoryFunction, quit): ";
+        std::cin >> operation;
 
-            if (operation == "quit") {
-                break;
-            }
+        if (operation == "quit") {
+            break;
+        }
 
+        if (operation == "add" || operation == "subtract" || operation == "multiply" || operation == "divide" || operation == "exponent") {
             std::cout << "Enter first number: ";
             std::cin >> num1;
             std::cout << "Enter second number: ";
@@ -209,11 +211,70 @@ public:
                 std::cout << "Result: " << divide(num1, num2) << std::endl;
             } else if (operation == "exponent") {
                 std::cout << "Result: " << exponent(num1, num2) << std::endl;
-            } else {
-                std::cout << "Invalid operation!" << std::endl;
             }
+        } else if (operation == "solveQuadratic") {
+            double a, b, c;
+            std::cout << "Enter coefficients a, b, and c: ";
+            std::cin >> a >> b >> c;
+            solveQuadratic(a, b, c);
+        } else if (operation == "convertAngle") {
+            double angle;
+            char unit;
+            std::cout << "Enter angle value and unit (r for radians, d for degrees): ";
+            std::cin >> angle >> unit;
+            if (unit == 'r') {
+                std::cout << "Degrees: " << radToDeg(angle) << std::endl;
+            } else if (unit == 'd') {
+                std::cout << "Radians: " << degToRad(angle) << std::endl;
+            } else {
+                std::cout << "Invalid unit!" << std::endl;
+            }
+        } else if (operation == "calculateStdDev") {
+            int n;
+            std::cout << "Enter the number of elements: ";
+            std::cin >> n;
+            double* data = new double[n];
+            std::cout << "Enter the elements: ";
+            for (int i = 0; i < n; ++i) {
+                std::cin >> data[i];
+            }
+            std::cout << "Standard Deviation: " << standardDeviation(data, n) << std::endl;
+            delete[] data;
+        } else if (operation == "simplifySqrt") {
+            int n;
+            std::cout << "Enter the number to simplify: ";
+            std::cin >> n;
+            simplifySqrt(n);
+        } else if (operation == "trigFunction") {
+            double angle;
+            std::cout << "Enter the angle in degrees: ";
+            std::cin >> angle;
+            std::cout << "Sin: " << sine(degToRad(angle)) << ", Cos: " << cosine(degToRad(angle)) << ", Tan: " << tangent(degToRad(angle)) << std::endl;
+        } else if (operation == "logExpFunction") {
+            double x;
+            std::cout << "Enter the value for logarithm/exponential calculation: ";
+            std::cin >> x;
+            std::cout << "Natural Log: " << naturalLog(x) << ", Log Base 10: " << logBase10(x) << ", Exponential: " << exp(x) << std::endl;
+        } else if (operation == "complexOperation") {
+            // Assuming operations on complex numbers are handled elsewhere or simplified here
+            std::cout << "Complex number operations are not fully implemented in this example." << std::endl;
+        } else if (operation == "statisticalFunction") {
+            // Assuming statistical functions are handled elsewhere or simplified here
+            std::cout << "Statistical functions are not fully implemented in this example." << std::endl;
+        } else if (operation == "numberTheoryFunction") {
+            int n;
+            std::cout << "Enter a number to check if it's prime: ";
+            std::cin >> n;
+            if (isPrime(n)) {
+                std::cout << n << " is a prime number." << std::endl;
+            } else {
+                std::cout << n << " is not a prime number." << std::endl;
+            }
+        } else {
+            std::cout << "Invalid operation!" << std::endl;
         }
     }
+}
 };
 
 int main() {
