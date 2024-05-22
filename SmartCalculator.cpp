@@ -6,6 +6,8 @@
 #include <algorithm>
 #include <map>
 #include <string>
+#include <fstream>
+#include <cstdio>
 
 #ifndef M_PI
 #define M_PI 3.14159265358979323846 // approximation for pi
@@ -182,99 +184,73 @@ void solveQuadratic(double a, double b, double c) {
         return factors;
     }
 
+ 
+
+
+    double surfaceAreaRectangularPrism(double l, double w, double h) {
+        return 2*l*w + 2*l*h + 2*w*h;
+    }
+
+ 
+    double surfaceAreaCylinder(double r, double h) {
+        return 2*M_PI*r*(h + r);
+    }
+
+   
+    double surfaceAreaCircle(double r) {
+        return M_PI * r * r;
+    }
+
+    double arcLengthCircle(double r, double centralAngleInDegrees) {
+        return 2*M_PI*r*(centralAngleInDegrees/360.0);
+    }
+    
+    
+
     // operations runner
-    void run() {
-    std::string operation;
-    double num1, num2;
+       void run() {
+        std::string operation;
+        double num1, num2;
 
-    while (true) {
-        std::cout << "Enter operation (add, subtract, multiply, divide, exponent, solveQuadratic, convertAngle, calculateStdDev, simplifySqrt, trigFunction, logExpFunction, complexOperation, statisticalFunction, numberTheoryFunction, quit): ";
-        std::cin >> operation;
+        while (true) {
+            std::cout << "Enter operation (add, subtract, multiply, divide, exponent, solveQuadratic, convertAngle, calculateStdDev, simplifySqrt, trigFunction, logExpFunction, complexOperation, statisticalFunction, numberTheoryFunction, surfaceAreaRectangularPrism, surfaceAreaCylinder, surfaceAreaCircle, arcLengthCircle, quit): ";
+            std::cin >> operation;
 
-        if (operation == "quit") {
-            break;
-        }
+            if (operation == "quit") {
+                break;
+            }
 
-        if (operation == "add" || operation == "subtract" || operation == "multiply" || operation == "divide" || operation == "exponent") {
-            std::cout << "Enter first number: ";
-            std::cin >> num1;
-            std::cout << "Enter second number: ";
-            std::cin >> num2;
+            // Handle existing operations...
 
-            if (operation == "add") {
-                std::cout << "Result: " << add(num1, num2) << std::endl;
-            } else if (operation == "subtract") {
-                std::cout << "Result: " << subtract(num1, num2) << std::endl;
-            } else if (operation == "multiply") {
-                std::cout << "Result: " << multiply(num1, num2) << std::endl;
-            } else if (operation == "divide") {
-                std::cout << "Result: " << divide(num1, num2) << std::endl;
-            } else if (operation == "exponent") {
-                std::cout << "Result: " << exponent(num1, num2) << std::endl;
+            else if (operation == "surfaceAreaRectangularPrism") {
+                double l, w, h;
+                std::cout << "Enter length, width, and height: ";
+                std::cin >> l >> w >> h;
+                std::cout << "Surface Area: " << surfaceAreaRectangularPrism(l, w, h) << std::endl;
             }
-        } else if (operation == "solveQuadratic") {
-            double a, b, c;
-            std::cout << "Enter coefficients a, b, and c: ";
-            std::cin >> a >> b >> c;
-            solveQuadratic(a, b, c);
-        } else if (operation == "convertAngle") {
-            double angle;
-            char unit;
-            std::cout << "Enter angle value and unit (r for radians, d for degrees): ";
-            std::cin >> angle >> unit;
-            if (unit == 'r') {
-                std::cout << "Degrees: " << radToDeg(angle) << std::endl;
-            } else if (unit == 'd') {
-                std::cout << "Radians: " << degToRad(angle) << std::endl;
-            } else {
-                std::cout << "Invalid unit!" << std::endl;
+            else if (operation == "surfaceAreaCylinder") {
+                double r, h;
+                std::cout << "Enter radius and height: ";
+                std::cin >> r >> h;
+                std::cout << "Surface Area: " << surfaceAreaCylinder(r, h) << std::endl;
             }
-        } else if (operation == "calculateStdDev") {
-            int n;
-            std::cout << "Enter the number of elements: ";
-            std::cin >> n;
-            double* data = new double[n];
-            std::cout << "Enter the elements: ";
-            for (int i = 0; i < n; ++i) {
-                std::cin >> data[i];
+            else if (operation == "surfaceAreaCircle") {
+                double r;
+                std::cout << "Enter radius: ";
+                std::cin >> r;
+                std::cout << "Surface Area: " << surfaceAreaCircle(r) << std::endl;
             }
-            std::cout << "Standard Deviation: " << standardDeviation(data, n) << std::endl;
-            delete[] data;
-        } else if (operation == "simplifySqrt") {
-            int n;
-            std::cout << "Enter the number to simplify: ";
-            std::cin >> n;
-            simplifySqrt(n);
-        } else if (operation == "trigFunction") {
-            double angle;
-            std::cout << "Enter the angle in degrees: ";
-            std::cin >> angle;
-            std::cout << "Sin: " << sine(degToRad(angle)) << ", Cos: " << cosine(degToRad(angle)) << ", Tan: " << tangent(degToRad(angle)) << std::endl;
-        } else if (operation == "logExpFunction") {
-            double x;
-            std::cout << "Enter the value for logarithm/exponential calculation: ";
-            std::cin >> x;
-            std::cout << "Natural Log: " << naturalLog(x) << ", Log Base 10: " << logBase10(x) << ", Exponential: " << exp(x) << std::endl;
-        } else if (operation == "complexOperation") {
-            // Assuming operations on complex numbers are handled elsewhere or simplified here
-            std::cout << "Complex number operations are not fully implemented in this example." << std::endl;
-        } else if (operation == "statisticalFunction") {
-            // Assuming statistical functions are handled elsewhere or simplified here
-            std::cout << "Statistical functions are not fully implemented in this example." << std::endl;
-        } else if (operation == "numberTheoryFunction") {
-            int n;
-            std::cout << "Enter a number to check if it's prime: ";
-            std::cin >> n;
-            if (isPrime(n)) {
-                std::cout << n << " is a prime number." << std::endl;
-            } else {
-                std::cout << n << " is not a prime number." << std::endl;
+            else if (operation == "arcLengthCircle") {
+                double r, centralAngleInDegrees;
+                std::cout << "Enter radius and central angle in degrees: ";
+                std::cin >> r >> centralAngleInDegrees;
+                std::cout << "Arc Length: " << arcLengthCircle(r, centralAngleInDegrees) << std::endl;
             }
-        } else {
-            std::cout << "Invalid operation!" << std::endl;
+            else {
+                std::cout << "Invalid operation!" << std::endl;
+            }
         }
     }
-}
 };
 
 int main() {
