@@ -1,16 +1,19 @@
-# smartCalc
+# 🧮 smartCalc: a nice introduction to new C++ concepts and a refresher on old
 
-Just a little calculator that I'm developing in C++. 
+Hey! Welcome to **smartCalc**, a personal project (not really) born out of a desire to master C++ concepts (somewhat true). It's more than just a calculator—it's a smart calculator where I experiment with various math concepts and functionalities, all accessible through a ~~ugly~~ pretty command-line interface (CLI). 
 
-Command Line Interface at the moment.
 
-## My current plan for this project
+## Why smartCalc?
 
-I want this to be a calculator that I can always refer to if I'm in ever need of specific calculations/time saving stuff.
+### The motivation behind the code
+
+~~I was forced to for a comp sci project.~~ I started on this to create a multipurpose tool that could handle everything from basic calculations to complex mathematical operations. Whether it's calculating the surface area of a sphere or finding the roots of a quadratic equation, smartCalc aims to be my Ti-84 PLUS CE when it's not in reach.
+
+### Choosing C++ Over Python
 
 ## So, whats the deal? Why write it in C++ instead of like py?
 
-Simple, I'm trying to learn C++. This works as a great exercise for me!
+While py might seem like the obvious choice for such a project due to its simplicity and extensive library support, I chose C++ for a very specific reason **learning** the syntax and functions because its hell to pick up later.  This project serves as a practical platform to dive deeper into my understanding of C++, exploring its capabilities in a real world situations.
 
 ## Developer Roadmap:
 
@@ -28,14 +31,13 @@ Simple, I'm trying to learn C++. This works as a great exercise for me!
 | 10  |          |
 | 11  |          |
 
-## Execution
+## Getting setup with the calculator:
 
-C++
+To run smartCalc, simply clone the repository and compile the `SmartCalculator.cpp` file using your C++ compiler of choice. Here's a quick example of how to execute the program:
 
 ```
-// simple really; just a simple call function to the class
+cpp #include "SmartCalculator.h"
 
-... 
 int main() {
 SmartCalculator calc;
     calc.run();
@@ -44,7 +46,10 @@ SmartCalculator calc;
 
 ## Sidenotes
 
-> to be honest, its actually really fun to work on this.
->
->> api calling is really fun since i've never done it before. C++ is pretty cool
+> ## Reflections on the project initally.
+
+Working on smartCalc for the short amount of time so far has been an incredibly ~~painful~~ amazing experience. From dealing with the complexities of C++ to integrating APIs for the first time, every challenge that I will encounter along the way has contributed to a deeper understanding of software development
+
+> ---
+>> if you're some random feel free to explore the code, contribute, or reach out if you're interested in making some suggestions
 
