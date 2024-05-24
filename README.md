@@ -1,5 +1,4 @@
-<p align="center"><img src="![PC Computer - Touhou Hisouten Scarlet Weather Rhapsody - Sakuya Izayois Portraits (1)](https://github.com/orangejuiceplz/smartCalc/assets/155986030/4a9df86e-97ef-446b-83a2-88540b8a22b5)
-" height="200"></p>
+<p align="center"><img src="https://github.com/orangejuiceplz/smartCalc/blob/main/SmartCalculator.ico" height="200"></p>
 
 <h1 align="center">🧮 smartCalc: a nice introduction to new C++ concepts and a refresher on old</h1>
 
