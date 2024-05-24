@@ -23,7 +23,7 @@ While py might seem like the obvious choice for such a project due to its simpli
 | Day | Progress |
 | --- | -------- |
 |  1  | I decided on the idea of building a smart calculator (a calculator with lots of inbuilt functions) in C++. I have initialized a GitHub repo with all of the files and will start building   the.cpp file. I have all of the necessary libraries on my main computer and will use vscode as my IDE of choice. Features should include but not be limited to: basic addition, subtraction, multiplication, division, simplifying radicals, (hopefully adding currency APIs), statistical functions, complex numbers, surface area/arc length, formula 'cheat sheet', prime factorization (number theory). |
-|  2  | Everything was approved, begging research into the wxWidgets libs. View Action plan for more information to continue on from there.  We can now ~~continue~~ start offically working on the project!        |
+|  2  | Everything was approved, beginning research into the wxWidgets libs. View Action plan for more information to continue on from there.  We can now ~~continue~~ start offically working on the project!        |
 |  3  |          |
 |  4  |          |
 |  5  |          |
