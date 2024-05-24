@@ -1,4 +1,8 @@
-# 🧮 smartCalc: a nice introduction to new C++ concepts and a refresher on old
+<p align="center"><img src="![PC Computer - Touhou Hisouten Scarlet Weather Rhapsody - Sakuya Izayois Portraits (1)](https://github.com/orangejuiceplz/smartCalc/assets/155986030/4a9df86e-97ef-446b-83a2-88540b8a22b5)
+" height="200"></p>
+
+<h1 align="center">🧮 smartCalc: a nice introduction to new C++ concepts and a refresher on old</h1>
+
 
 Hey! Welcome to **smartCalc**, a personal project (not really) born out of a desire to master C++ concepts (somewhat true). It's more than just a calculator—it's a smart calculator where I experiment with various math concepts and functionalities, all accessible through a ~~ugly~~ pretty command-line interface (CLI). 
 
