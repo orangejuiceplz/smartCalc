@@ -1,6 +1,10 @@
 > [!WARNING]  
 > Currently, the SFML libs and dlls are not supported and the files containing these will be deprecated.
+
+> [!NOTE]
 > I am transitioning to use wxWidgets, as was the original intensions as the SFML libs are hell to deal with.
+
+> [!IMPORTANT]
 > EDIT @ 30/5/24 09:17 : Should have updated files to use wxWidgets instead of SFML. Will have to properly add libs and dlls soons.
 
 <p align="center"><img src="https://github.com/orangejuiceplz/smartCalc/blob/main/SmartCalculator.ico" height="200"></p>
