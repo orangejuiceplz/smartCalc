@@ -1,3 +1,7 @@
+> [!WARNING]  
+> Currently, the SFML libs and dlls are not supported and the files containing these will be deprecated.
+> I am transitioning to use wxWidgets, as was the original intensions as the SFML libs are hell to deal with.
+
 <p align="center"><img src="https://github.com/orangejuiceplz/smartCalc/blob/main/SmartCalculator.ico" height="200"></p>
 
 <h1 align="center">🧮 smartCalc: a nice introduction to new C++ concepts and a refresher on old</h1>
