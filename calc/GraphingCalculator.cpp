@@ -2,69 +2,63 @@
 
 #include <iostream>
 
-GraphingCalculator::GraphingCalculator(SmartCalculator & calc): calculator(calc) {}
+wxBEGIN_EVENT_TABLE(GraphingCalculator, wxFrame)
+    EVT_PAINT(GraphingCalculator::OnPaint)
+    EVT_CLOSE(GraphingCalculator::OnClose)
+wxEND_EVENT_TABLE()
 
-void GraphingCalculator::run() {
-  const int width = 800;
-  const int height = 600;
-  double xMin = -10.0;
-  double xMax = 10.0;
-  double yMin = -10.0;
-  double yMax = 10.0;
-
-  sf::RenderWindow window(sf::VideoMode(width, height), "Graphing Calculator");
-
-  std::vector < std::string > functions;
-  std::string inputFunction;
-
-  std::cout << "Enter mathematical functions to graph (enter 'done' when finished):" << std::endl;
-  while (std::getline(std::cin, inputFunction) && inputFunction != "done") {
-    functions.push_back(inputFunction);
-  }
-
-  while (window.isOpen()) {
-    sf::Event event;
-    while (window.pollEvent(event)) {
-      if (event.type == sf::Event::Closed)
-        window.close();
+GraphingCalculator::GraphingCalculator(SmartCalculator & calc)
+    : wxFrame(nullptr, wxID_ANY, "Graphing Calculator", wxDefaultPosition, wxSize(800, 600)), calculator(calc) {
+    std::cout << "Enter mathematical functions to graph (enter 'done' when finished):" << std::endl;
+    std::string inputFunction;
+    while (std::getline(std::cin, inputFunction) && inputFunction != "done") {
+        functions.push_back(inputFunction);
     }
+}
 
-    window.clear(sf::Color::White);
+void GraphingCalculator::OnPaint(wxPaintEvent& event) {
+    wxPaintDC dc(this);
+    int width, height;
+    GetClientSize(&width, &height);
 
-    sf::Vertex xAxis[] = {
-      sf::Vertex(sf::Vector2f(0, height / 2), sf::Color::Black),
-      sf::Vertex(sf::Vector2f(width, height / 2), sf::Color::Black)
-    };
-    window.draw(xAxis, 2, sf::Lines);
+    double xMin = -10.0;
+    double xMax = 10.0;
+    double yMin = -10.0;
+    double yMax = 10.0;
 
-    sf::Vertex yAxis[] = {
-      sf::Vertex(sf::Vector2f(width / 2, 0), sf::Color::Black),
-      sf::Vertex(sf::Vector2f(width / 2, height), sf::Color::Black)
-    };
-    window.draw(yAxis, 2, sf::Lines);
+    dc.SetPen(*wxBLACK_PEN);
 
-    // drawing graphs
-    for (const std::string & function: functions) {
-      sf::VertexArray graph(sf::LineStrip);
-      for (int x = 0; x < width; ++x) {
-        double xCoord = xMin + (xMax - xMin) * x / width;
-        double yCoord = evaluateExpression(function, xCoord);
-        double yPixel = height - (yCoord - yMin) * height / (yMax - yMin);
-        graph.append(sf::Vertex(sf::Vector2f(x, yPixel), sf::Color::Red));
-      }
-      window.draw(graph);
+    // Draw x-axis
+    dc.DrawLine(0, height / 2, width, height / 2);
+
+    // Draw y-axis
+    dc.DrawLine(width / 2, 0, width / 2, height);
+
+    // Draw graphs
+    dc.SetPen(wxPen(wxColour(255, 0, 0)));
+    for (const std::string& function : functions) {
+        wxPointList* points = new wxPointList();
+        for (int x = 0; x < width; ++x) {
+            double xCoord = xMin + (xMax - xMin) * x / width;
+            double yCoord = evaluateExpression(function, xCoord);
+            double yPixel = height - (yCoord - yMin) * height / (yMax - yMin);
+            points->Append(new wxPoint(x, yPixel));
+        }
+        dc.DrawLines(points);
+        delete points;
     }
+}
 
-    window.display();
-  }
+void GraphingCalculator::OnClose(wxCloseEvent& event) {
+    Destroy();
 }
 
 double GraphingCalculator::evaluateExpression(const std::string & expression, double x) {
-  // to do later: implement  expression evaluation logic here using  existing calculator functions
-  // as an example, if the expression is "sin(x)", you can use the calculator's sine function
-  if (expression == "sin(x)") {
-    return calculator.sine(x);
-  }
+    // to do later: implement expression evaluation logic here using existing calculator functions
+    // as an example, if the expression is "sin(x)", you can use the calculator's sine function
+    if (expression == "sin(x)") {
+        return calculator.sine(x);
+    }
 
-  return 0.0; //  default value if the expression is not recognized
+    return 0.0; // default value if the expression is not recognized
 }
