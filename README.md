@@ -42,16 +42,7 @@ While py might seem like the obvious choice for such a project due to its simpli
 
 ## Getting setup with the calculator:
 
-To run smartCalc, simply clone the repository and compile the `SmartCalculator.cpp` file using your C++ compiler of choice. Here's a quick example of how to execute the program:
-
-```cpp
-#include "SmartCalculator.h"
-
-int main() {
-SmartCalculator calc;
-    calc.run();
-}
-```
+not yet cause i'm not done and won't compile and i'm going to cry
 
 ## Sidenotes
 
