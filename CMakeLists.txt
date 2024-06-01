@@ -1,33 +1,24 @@
 cmake_minimum_required(VERSION 3.10)
-project(calc)
+project(SmartCalculator)
 
+# Set the C++ standard
 set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
 
-# Set build type
-if(NOT CMAKE_BUILD_TYPE)
-    set(CMAKE_BUILD_TYPE Release)
-endif()
-
-# Set output directory for the executable
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
-
-# Manually set wxWidgets paths
-set(wxWidgets_ROOT_DIR "C:/Users/shive/vcpkg/installed/x64-windows")
-set(wxWidgets_INCLUDE_DIRS "${wxWidgets_ROOT_DIR}/include")
-set(wxWidgets_LIB_DIR "${wxWidgets_ROOT_DIR}/lib")
-
-# Add wxWidgets
+# Find wxWidgets package
 find_package(wxWidgets REQUIRED COMPONENTS core base)
-if(wxWidgets_FOUND)
-    include(${wxWidgets_USE_FILE})
-else()
-    message(FATAL_ERROR "wxWidgets not found")
+
+if(NOT wxWidgets_FOUND)
+    message(FATAL_ERROR "wxWidgets not found.")
 endif()
 
+# Include wxWidgets
+include(${wxWidgets_USE_FILE})
 include_directories(${wxWidgets_INCLUDE_DIRS})
-link_directories(${wxWidgets_LIB_DIR})
 
-add_executable(calc main.cpp SmartCalculator.cpp)
+# Add source files
+add_executable(SmartCalculator main.cpp)
 
 # Link wxWidgets libraries
-target_link_libraries(calc ${wxWidgets_LIBRARIES})
+target_link_libraries(SmartCalculator ${wxWidgets_LIBRARIES})
