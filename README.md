@@ -1,8 +1,5 @@
 > [!NOTE]
-> I am transitioning to use wxWidgets, as was the original intensions as the SFML libs are hell to deal with.
-
-> [!WARNING]
-> Wont compile because I'm stupid. I'll fix it over the weekend.
+> Should be almost done with the graphing GUI.
 
 <p align="center"><img src="https://github.com/orangejuiceplz/smartCalc/blob/main/SmartCalculator.ico" height="200"></p>
 
