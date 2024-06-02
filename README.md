@@ -39,7 +39,7 @@ While py might seem like the obvious choice for such a project due to its simpli
 
 ## Getting setup with the calculator:
 
-not yet cause i'm not done and won't compile and i'm going to cry
+In the build folder, if you're using VS17, just build the Release x64 solution. If not, use CMAKE.
 
 ## Sidenotes
 
