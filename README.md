@@ -41,6 +41,17 @@ While py might seem like the obvious choice for such a project due to its simpli
 
 In the build folder, if you're using VS17, just build the Release x64 solution. If not, use CMAKE.
 
+Steps:
+
+Clone the repository
+Go into the build folder
+Double click SmartCalculator.sln (MUST HAVE VS17 (2022) INSTALLED)
+On the dropdown, click "Release".
+Make sure the Arch is set to x64.
+Press Control + Shift + B to build the solution
+Open the build folder, click releases, click x64 or smth, then the exe should be there.
+Enjoy.
+
 ## Sidenotes
 
 > ## Reflections on the project so far.
