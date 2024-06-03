@@ -43,9 +43,9 @@ In the build folder, if you're using VS17, just build the Release x64 solution. 
 
 ## Sidenotes
 
-> ## Reflections on the project initally.
+> ## Reflections on the project so far.
 
-Working on smartCalc for the short amount of time so far has been an incredibly ~~painful~~ amazing experience. From dealing with the complexities of C++ to integrating APIs for the first time, every challenge that I will encounter along the way has contributed to a deeper understanding of software development
+Working on smartCalc for the short amount of time so far has been an incredibly ~~painful~~ amazing experience. From dealing with the complexities of C++ to integrating APIs for the first time, every challenge that I will encounter along the way has contributed to a deeper understanding of software development. Although I haven't really integrated the API features, the documentation seems easy to implement in the project.
 
 > ---
 >> if you're some random feel free to explore the code, contribute, or reach out if you're interested in making some suggestions
