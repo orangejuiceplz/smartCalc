@@ -31,10 +31,12 @@ void SmartCalculator::solveQuadratic(double a, double b, double c) {
         std::cout << "The roots are real and different. Solving for x:\n";
         std::cout << "x1 = " << (-b + sqrt_val) / (2 * a) << "\n";
         std::cout << "x2 = " << (-b - sqrt_val) / (2 * a) << "\n";
-    } else if (discriminant == 0) {
+    }
+    else if (discriminant == 0) {
         std::cout << "The roots are real and equal. Solving for x:\n";
         std::cout << "x = " << -b / (2 * a) << "\n";
-    } else {
+    }
+    else {
         std::complex<double> sqrt_val(0, sqrt(abs(discriminant)));
         std::cout << "The roots are complex and different. Solving for x:\n";
         std::cout << "x1 = " << (-b + sqrt_val) / (2 * a) << "\n";
@@ -67,7 +69,8 @@ void SmartCalculator::simplifySqrt(int n) {
     }
     if (simplified == 1) {
         std::cout << "Simplified square root: sqrt(" << n << ")\n";
-    } else {
+    }
+    else {
         std::cout << "Simplified square root: " << simplified << "sqrt(" << n / (simplified * simplified) << ")\n";
     }
 }
@@ -129,7 +132,8 @@ double SmartCalculator::median(std::vector<double> data) {
     std::sort(data.begin(), data.end());
     if (data.size() % 2 == 0) {
         return (data[data.size() / 2 - 1] + data[data.size() / 2]) / 2;
-    } else {
+    }
+    else {
         return data[data.size() / 2];
     }
 }
