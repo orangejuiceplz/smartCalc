@@ -18,7 +18,7 @@ include(${wxWidgets_USE_FILE})
 include_directories(${wxWidgets_INCLUDE_DIRS})
 
 # Add source files
-add_executable(SmartCalculator main.cpp)
+add_executable(SmartCalculator main.cpp SmartCalculator.cpp SmartCalculator.h)
 
 # Link wxWidgets libraries
 target_link_libraries(SmartCalculator ${wxWidgets_LIBRARIES})
