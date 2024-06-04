@@ -1,3 +1,4 @@
+#pragma once
 #ifndef SMARTCALCULATOR_H
 #define SMARTCALCULATOR_H
 
