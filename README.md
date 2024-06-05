@@ -1,5 +1,5 @@
-> [!NOTE]
-> Should be almost done with the graphing GUI.
+> [!IMPORTANT]
+> GUI basis is completed. I just need to make it minimalisitcclean/whatever. API's FINALLY + Conversion
 
 <p align="center"><img src="https://github.com/orangejuiceplz/smartCalc/blob/main/SmartCalculator.ico" height="200"></p>
 
