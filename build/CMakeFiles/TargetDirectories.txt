@@ -1,3 +1,0 @@
-C:/Visual Studio Projects/tempcalc/build/CMakeFiles/SmartCalculator.dir
-C:/Visual Studio Projects/tempcalc/build/CMakeFiles/ALL_BUILD.dir
-C:/Visual Studio Projects/tempcalc/build/CMakeFiles/ZERO_CHECK.dir
