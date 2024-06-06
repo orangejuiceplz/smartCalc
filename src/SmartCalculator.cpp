@@ -2,6 +2,8 @@
 #include <curl/curl.h>
 #include "json.hpp"
 
+
+// this line is directly pulling from the hpp file at the root of the repo
 using json = nlohmann::json;
 
 double SmartCalculator::add(double a, double b) {
