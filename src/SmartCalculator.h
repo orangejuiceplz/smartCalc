@@ -51,6 +51,10 @@ public:
     double arcLengthCircle(double r, double centralAngleInDegrees);
     void graphFunction();
     double evaluateExpression(const std::string& expression, double x);
+    double convertCurrency(double amount, const std::string& fromCurrency, const std::string& toCurrency);
 };
+
+// Declare the WriteCallback function
+static size_t WriteCallback(void* contents, size_t size, size_t nmemb, void* userp);
 
 #endif // SMARTCALCULATOR_H
