@@ -1,5 +1,5 @@
-> [!NOTE]
-> Should be almost done with the graphing GUI.
+> [!IMPORTANT]
+> GUI basis is completed. I just need to make it minimalisitcclean/whatever. API's FINALLY + Conversion
 
 <p align="center"><img src="https://github.com/orangejuiceplz/smartCalc/blob/main/SmartCalculator.ico" height="200"></p>
 
@@ -29,9 +29,9 @@ While py might seem like the obvious choice for such a project due to its simpli
 |  2  | Everything was approved, beginning research into the wxWidgets libs. View Action plan for more information to continue on from there.  We can now ~~continue~~ start offically working on the project!        |
 |  3  | I'm slowly breaking everything apart for the ease of readibility, simplicity, whatever. I split the SmartCalculator into SmartCalculator.h and SmartCalculator.cpp. These will handle their respective operations. I've also began experimenting with the SFML Graphing library before I begin with the wxWidgets. So far, it seems to be compiling fine on my system, however, I will need to do more things to make this universal. Good progress so far in my opinion. Header files make it easier to work with the project because I don't need to scroll for a thousand years.       |
 |  4  | I was trying to work with SFML, but it seems like to hell to deal with. I've literally tried all options (maybe not reinstalling MSYS2 or GCC). I might just straight go into just using wxWidgets instead of experimentng with SFML anymore. It seems easy to install using vcpkg which I've had preinstalled on my system before. I also think some of the syntax is a litle more intuitive and its support team/discord is a lot mroe active relative to SFML. I wont get the hours working trying to install SFML on my system back, but I can certainly make it up with the graphing. I still need to update the files in the repo with some on my local changes since I've made notable changes without comitting them to the repository. (I didn't feel like pushing changes just because I was using something I knew wasn't going to work, but oh well.        |
-|  5  |          |
-|  6  |          |
-|  7  |          |
+|  5  | I sucessfully got wxWidgets to work and built the project using cmake, thats why there is some C and some CMakeList languages located in the respository. After linking the libs and getting the graphing GUI to work, I might just start converting everything to have a GUI element. I finally have some hope. Although I haven't really dealt with API's yet, and I probably should start doing that before I convert everything to a GUI, I should be okay. The current version today, v1.6.0, was built with Visual Studio 17 (2022) for x64 architectures. I've just been looking into the wxWidgets stuff and I might rewrite/rework how the GUI works right now, as you can only graph a limited amount of stuff right now. I think I already wrote the logic for normal functions, All I need to do is incorporate it. I might also use NSYS to help with the distribution of the exe. However, the only issue is that I spent about a good amount of time having to convert everything into main.cpp insteaad of breaking it into multiple files since I don't like linking the files and everything.       |
+|  6  | I'm going to test headerfiles again. I think after reading up a lot more on the documentation, I think I can probably successfully link these files without any issues. CMake GUI should make it a whole lot easier since I really don't like terminals (even though I have arch linux). So rightnow I've created a new branch called 'dev' or something which will slowly document all of these changes. Other than that, not a whole lot of progress. I guess I am starting to slowly convert everything to a GUI function instead of CLI. I- think I can do this with the short amount of time I have left. API's may be truncated in the worst case scenario.     |
+|  7  | Good news is that everything worked as expected. Code compiled and everything and I'm a very happy person. One issue, though. I had to switch from using VSC to using VS. Its not ideal, and I do like using VSC as my primary code editor, followed by neovim, but it gets the job done faster and I only really have to configure one time. Thats great. I added all of the GUI featurse for what methods I have right now in my files, so thats good. The UI looks really bad though, and I'm dissapointed with myself that I made something that bad (to be fair, it is my first time using wxWidgets so my UI knowledge with this library is pretty scarce.           |
 |  8  |          |
 |  9  |          |
 | 10  |          |
@@ -39,13 +39,24 @@ While py might seem like the obvious choice for such a project due to its simpli
 
 ## Getting setup with the calculator:
 
-not yet cause i'm not done and won't compile and i'm going to cry
+In the build folder, if you're using VS17, just build the Release x64 solution. If not, use CMAKE.
+
+Steps:
+
+Clone the repository
+Go into the build folder
+Double click SmartCalculator.sln (MUST HAVE VS17 (2022) INSTALLED)
+On the dropdown, click "Release".
+Make sure the Arch is set to x64.
+Press Control + Shift + B to build the solution
+Open the build folder, click releases, click x64 or smth, then the exe should be there.
+Enjoy.
 
 ## Sidenotes
 
-> ## Reflections on the project initally.
+> ## Reflections on the project so far.
 
-Working on smartCalc for the short amount of time so far has been an incredibly ~~painful~~ amazing experience. From dealing with the complexities of C++ to integrating APIs for the first time, every challenge that I will encounter along the way has contributed to a deeper understanding of software development
+Working on smartCalc for the short amount of time so far has been an incredibly ~~painful~~ amazing experience. From dealing with the complexities of C++ to integrating APIs for the first time, every challenge that I will encounter along the way has contributed to a deeper understanding of software development. Although I haven't really integrated the API features, the documentation seems easy to implement in the project.
 
 > ---
 >> if you're some random feel free to explore the code, contribute, or reach out if you're interested in making some suggestions
