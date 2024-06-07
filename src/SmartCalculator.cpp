@@ -239,6 +239,54 @@ double SmartCalculator::convertCurrency(double amount, const std::string& fromCu
     return 0.0;
 }
 
+std::string SmartCalculator::intToBinary(int n) {
+    std::string binary;
+    while (n > 0) {
+        binary = (n % 2 == 0 ? "0" : "1") + binary;
+        n /= 2;
+    }
+    return binary.empty() ? "0" : binary;
+}
+
+std::string SmartCalculator::intToHex(int n) {
+    std::stringstream ss;
+    ss << std::hex << n;
+    return ss.str();
+}
+
+int SmartCalculator::binaryToInt(const std::string& binary) {
+    return std::stoi(binary, nullptr, 2);
+}
+
+int SmartCalculator::hexToInt(const std::string& hex) {
+    return std::stoi(hex, nullptr, 16);
+}
+
+// Unit Conversions
+double SmartCalculator::celsiusToFahrenheit(double celsius) {
+    return (celsius * 9.0 / 5.0) + 32.0;
+}
+
+double SmartCalculator::fahrenheitToCelsius(double fahrenheit) {
+    return (fahrenheit - 32.0) * 5.0 / 9.0;
+}
+
+double SmartCalculator::metersToFeet(double meters) {
+    return meters * 3.28084;
+}
+
+double SmartCalculator::feetToMeters(double feet) {
+    return feet / 3.28084;
+}
+
+double SmartCalculator::kilogramsToPounds(double kilograms) {
+    return kilograms * 2.20462;
+}
+
+double SmartCalculator::poundsToKilograms(double pounds) {
+    return pounds / 2.20462;
+}
+
 static size_t WriteCallback(void* contents, size_t size, size_t nmemb, void* userp) {
     ((std::string*)userp)->append((char*)contents, size * nmemb);
     return size * nmemb;
