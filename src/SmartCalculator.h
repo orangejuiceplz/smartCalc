@@ -52,6 +52,16 @@ public:
     void graphFunction();
     double evaluateExpression(const std::string& expression, double x);
     double convertCurrency(double amount, const std::string& fromCurrency, const std::string& toCurrency);
+    std::string intToBinary(int n);
+    std::string intToHex(int n);
+    int binaryToInt(const std::string& binary);
+    int hexToInt(const std::string& hex);
+    double celsiusToFahrenheit(double celsius);
+    double fahrenheitToCelsius(double fahrenheit);
+    double metersToFeet(double meters);
+    double feetToMeters(double feet);
+    double kilogramsToPounds(double kilograms);
+    double poundsToKilograms(double pounds);
 };
 
 // Declare the WriteCallback function
