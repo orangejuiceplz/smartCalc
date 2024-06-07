@@ -106,7 +106,17 @@ enum {
     ID_SurfaceAreaCylinder,
     ID_SurfaceAreaCircle,
     ID_ArcLengthCircle,
-    ID_Convert_Currency
+    ID_Convert_Currency,
+    ID_IntToBinary,
+    ID_IntToHex,
+    ID_BinaryToInt,
+    ID_HexToInt,
+    ID_CelsiusToFahrenheit,
+    ID_FahrenheitToCelsius,
+    ID_MetersToFeet,
+    ID_FeetToMeters,
+    ID_KilogramsToPounds,
+    ID_PoundsToKilograms
 };
 
 wxBEGIN_EVENT_TABLE(MainFrame, wxFrame)
@@ -144,6 +154,16 @@ EVT_BUTTON(ID_SurfaceAreaCylinder, MainFrame::OnSurfaceAreaCylinder)
 EVT_BUTTON(ID_SurfaceAreaCircle, MainFrame::OnSurfaceAreaCircle)
 EVT_BUTTON(ID_ArcLengthCircle, MainFrame::OnArcLengthCircle)
 EVT_BUTTON(ID_Convert_Currency, MainFrame::OnConvertCurrency)
+EVT_BUTTON(ID_IntToBinary, MainFrame::OnIntToBinary)
+EVT_BUTTON(ID_IntToHex, MainFrame::OnIntToHex)
+EVT_BUTTON(ID_BinaryToInt, MainFrame::OnBinaryToInt)
+EVT_BUTTON(ID_HexToInt, MainFrame::OnHexToInt)
+EVT_BUTTON(ID_CelsiusToFahrenheit, MainFrame::OnCelsiusToFahrenheit)
+EVT_BUTTON(ID_FahrenheitToCelsius, MainFrame::OnFahrenheitToCelsius)
+EVT_BUTTON(ID_MetersToFeet, MainFrame::OnMetersToFeet)
+EVT_BUTTON(ID_FeetToMeters, MainFrame::OnFeetToMeters)
+EVT_BUTTON(ID_KilogramsToPounds, MainFrame::OnKilogramsToPounds)
+EVT_BUTTON(ID_PoundsToKilograms, MainFrame::OnPoundsToKilograms)
 wxEND_EVENT_TABLE()
 
 class MyApp : public wxApp {
@@ -396,20 +416,85 @@ MainFrame::MainFrame(const wxString& title)
     btnConvertCurrency->SetForegroundColour(wxColour(255, 255, 255));
     btnConvertCurrency->SetFont(font);
     miscGridSizer->Add(btnConvertCurrency, 1, wxEXPAND);
-    miscGridSizer->Add(btnIsPrime, 1, wxEXPAND);
-    miscGridSizer->Add(btnFactorize, 1, wxEXPAND);
-    miscGridSizer->Add(btnSurfaceAreaRectangularPrism, 1, wxEXPAND);
-    miscGridSizer->Add(btnSurfaceAreaCylinder, 1, wxEXPAND);
-    miscGridSizer->Add(btnSurfaceAreaCircle, 1, wxEXPAND);
-    miscGridSizer->Add(btnArcLengthCircle, 1, wxEXPAND);
-    vbox->Add(miscGridSizer, 0, wxEXPAND | wxALL, 10);
+    wxStaticText* dataConversionsLabel = new wxStaticText(panel, wxID_ANY, "Data Conversions");
+dataConversionsLabel->SetForegroundColour(wxColour(255, 255, 255));
+dataConversionsLabel->SetFont(font);
+vbox->Add(dataConversionsLabel, 0, wxALIGN_CENTER | wxTOP | wxBOTTOM, 10);
 
-    wxBoxSizer* hbox3 = new wxBoxSizer(wxHORIZONTAL);
-    resultLabel = new wxStaticText(panel, wxID_ANY, "Result: ");
-    resultLabel->SetForegroundColour(wxColour(255, 255, 255));
-    resultLabel->SetFont(font);
-    hbox3->Add(resultLabel, 1, wxEXPAND | wxALL, 10);
-    vbox->Add(hbox3, 0, wxEXPAND);
+wxGridSizer* dataConversionsGridSizer = new wxGridSizer(2, 2, 5, 5);
+wxButton* btnIntToBinary = new wxButton(panel, ID_IntToBinary, "Int to Binary", wxDefaultPosition, wxDefaultSize, wxBORDER_NONE);
+btnIntToBinary->SetBackgroundColour(wxColour(64, 64, 64));
+btnIntToBinary->SetForegroundColour(wxColour(255, 255, 255));
+btnIntToBinary->SetFont(font);
+wxButton* btnIntToHex = new wxButton(panel, ID_IntToHex, "Int to Hex", wxDefaultPosition, wxDefaultSize, wxBORDER_NONE);
+btnIntToHex->SetBackgroundColour(wxColour(64, 64, 64));
+btnIntToHex->SetForegroundColour(wxColour(255, 255, 255));
+btnIntToHex->SetFont(font);
+wxButton* btnBinaryToInt = new wxButton(panel, ID_BinaryToInt, "Binary to Int", wxDefaultPosition, wxDefaultSize, wxBORDER_NONE);
+btnBinaryToInt->SetBackgroundColour(wxColour(64, 64, 64));
+btnBinaryToInt->SetForegroundColour(wxColour(255, 255, 255));
+btnBinaryToInt->SetFont(font);
+wxButton* btnHexToInt = new wxButton(panel, ID_HexToInt, "Hex to Int", wxDefaultPosition, wxDefaultSize, wxBORDER_NONE);
+btnHexToInt->SetBackgroundColour(wxColour(64, 64, 64));
+btnHexToInt->SetForegroundColour(wxColour(255, 255, 255));
+btnHexToInt->SetFont(font);
+dataConversionsGridSizer->Add(btnIntToBinary, 1, wxEXPAND);
+dataConversionsGridSizer->Add(btnIntToHex, 1, wxEXPAND);
+dataConversionsGridSizer->Add(btnBinaryToInt, 1, wxEXPAND);
+dataConversionsGridSizer->Add(btnHexToInt, 1, wxEXPAND);
+vbox->Add(dataConversionsGridSizer, 0, wxEXPAND | wxALL, 10);
+
+wxStaticText* unitConversionsLabel = new wxStaticText(panel, wxID_ANY, "Unit Conversions");
+unitConversionsLabel->SetForegroundColour(wxColour(255, 255, 255));
+unitConversionsLabel->SetFont(font);
+vbox->Add(unitConversionsLabel, 0, wxALIGN_CENTER | wxTOP | wxBOTTOM, 10);
+
+wxGridSizer* unitConversionsGridSizer = new wxGridSizer(2, 3, 5, 5);
+wxButton* btnCelsiusToFahrenheit = new wxButton(panel, ID_CelsiusToFahrenheit, "Celsius to Fahrenheit", wxDefaultPosition, wxDefaultSize, wxBORDER_NONE);
+btnCelsiusToFahrenheit->SetBackgroundColour(wxColour(64, 64, 64));
+btnCelsiusToFahrenheit->SetForegroundColour(wxColour(255, 255, 255));
+btnCelsiusToFahrenheit->SetFont(font);
+wxButton* btnFahrenheitToCelsius = new wxButton(panel, ID_FahrenheitToCelsius, "Fahrenheit to Celsius", wxDefaultPosition, wxDefaultSize, wxBORDER_NONE);
+btnFahrenheitToCelsius->SetBackgroundColour(wxColour(64, 64, 64));
+btnFahrenheitToCelsius->SetForegroundColour(wxColour(255, 255, 255));
+btnFahrenheitToCelsius->SetFont(font);
+wxButton* btnMetersToFeet = new wxButton(panel, ID_MetersToFeet, "Meters to Feet", wxDefaultPosition, wxDefaultSize, wxBORDER_NONE);
+btnMetersToFeet->SetBackgroundColour(wxColour(64, 64, 64));
+btnMetersToFeet->SetForegroundColour(wxColour(255, 255, 255));
+btnMetersToFeet->SetFont(font);
+wxButton* btnFeetToMeters = new wxButton(panel, ID_FeetToMeters, "Feet to Meters", wxDefaultPosition, wxDefaultSize, wxBORDER_NONE);
+btnFeetToMeters->SetBackgroundColour(wxColour(64, 64, 64));
+btnFeetToMeters->SetForegroundColour(wxColour(255, 255, 255));
+btnFeetToMeters->SetFont(font);
+wxButton* btnKilogramsToPounds = new wxButton(panel, ID_KilogramsToPounds, "Kilograms to Pounds", wxDefaultPosition, wxDefaultSize, wxBORDER_NONE);
+btnKilogramsToPounds->SetBackgroundColour(wxColour(64, 64, 64));
+btnKilogramsToPounds->SetForegroundColour(wxColour(255, 255, 255));
+btnKilogramsToPounds->SetFont(font);
+wxButton* btnPoundsToKilograms = new wxButton(panel, ID_PoundsToKilograms, "Pounds to Kilograms", wxDefaultPosition, wxDefaultSize, wxBORDER_NONE);
+btnPoundsToKilograms->SetBackgroundColour(wxColour(64, 64, 64));
+btnPoundsToKilograms->SetForegroundColour(wxColour(255, 255, 255));
+btnPoundsToKilograms->SetFont(font);
+unitConversionsGridSizer->Add(btnCelsiusToFahrenheit, 1, wxEXPAND);
+unitConversionsGridSizer->Add(btnFahrenheitToCelsius, 1, wxEXPAND);
+unitConversionsGridSizer->Add(btnMetersToFeet, 1, wxEXPAND);
+unitConversionsGridSizer->Add(btnFeetToMeters, 1, wxEXPAND);
+unitConversionsGridSizer->Add(btnKilogramsToPounds, 1, wxEXPAND);
+unitConversionsGridSizer->Add(btnPoundsToKilograms, 1, wxEXPAND);
+vbox->Add(unitConversionsGridSizer, 0, wxEXPAND | wxALL, 10);
+miscGridSizer->Add(btnIsPrime, 1, wxEXPAND);
+miscGridSizer->Add(btnFactorize, 1, wxEXPAND);
+miscGridSizer->Add(btnSurfaceAreaRectangularPrism, 1, wxEXPAND);
+miscGridSizer->Add(btnSurfaceAreaCylinder, 1, wxEXPAND);
+miscGridSizer->Add(btnSurfaceAreaCircle, 1, wxEXPAND);
+miscGridSizer->Add(btnArcLengthCircle, 1, wxEXPAND);
+vbox->Add(miscGridSizer, 0, wxEXPAND | wxALL, 10);
+
+wxBoxSizer* hbox3 = new wxBoxSizer(wxHORIZONTAL);
+resultLabel = new wxStaticText(panel, wxID_ANY, "Result: ");
+resultLabel->SetForegroundColour(wxColour(255, 255, 255));
+resultLabel->SetFont(font);
+hbox3->Add(resultLabel, 1, wxEXPAND | wxALL, 10);
+vbox->Add(hbox3, 0, wxEXPAND);
 
     panel->SetSizer(vbox);
 }
@@ -761,7 +846,70 @@ void MainFrame::OnConvertCurrency(wxCommandEvent& event) {
     resultLabel->SetLabel(wxString::Format("Result: %f", result));
 }
 
+void MainFrame::OnIntToBinary(wxCommandEvent& event) {
+    long n;
+    inputA->GetValue().ToLong(&n);
+    std::string result = calculator.intToBinary(n);
+    resultLabel->SetLabel(wxString::Format("Binary: %s", result));
+}
 
+void MainFrame::OnIntToHex(wxCommandEvent& event) {
+    long n;
+    inputA->GetValue().ToLong(&n);
+    std::string result = calculator.intToHex(n);
+    resultLabel->SetLabel(wxString::Format("Hex: %s", result));
+}
 
+void MainFrame::OnBinaryToInt(wxCommandEvent& event) {
+    wxString binary = inputA->GetValue();
+    int result = calculator.binaryToInt(binary.ToStdString());
+    resultLabel->SetLabel(wxString::Format("Integer: %d", result));
+}
 
+void MainFrame::OnHexToInt(wxCommandEvent& event) {
+    wxString hex = inputA->GetValue();
+    int result = calculator.hexToInt(hex.ToStdString());
+    resultLabel->SetLabel(wxString::Format("Integer: %d", result));
+}
 
+void MainFrame::OnCelsiusToFahrenheit(wxCommandEvent& event) {
+    double celsius;
+    inputA->GetValue().ToDouble(&celsius);
+    double result = calculator.celsiusToFahrenheit(celsius);
+    resultLabel->SetLabel(wxString::Format("Fahrenheit: %f", result));
+}
+
+void MainFrame::OnFahrenheitToCelsius(wxCommandEvent& event) {
+    double fahrenheit;
+    inputA->GetValue().ToDouble(&fahrenheit);
+    double result = calculator.fahrenheitToCelsius(fahrenheit);
+    resultLabel->SetLabel(wxString::Format("Celsius: %f", result));
+}
+
+void MainFrame::OnMetersToFeet(wxCommandEvent& event) {
+    double meters;
+    inputA->GetValue().ToDouble(&meters);
+    double result = calculator.metersToFeet(meters);
+    resultLabel->SetLabel(wxString::Format("Feet: %f", result));
+}
+
+void MainFrame::OnFeetToMeters(wxCommandEvent& event) {
+    double feet;
+    inputA->GetValue().ToDouble(&feet);
+    double result = calculator.feetToMeters(feet);
+    resultLabel->SetLabel(wxString::Format("Meters: %f", result));
+}
+
+void MainFrame::OnKilogramsToPounds(wxCommandEvent& event) {
+    double kilograms;
+    inputA->GetValue().ToDouble(&kilograms);
+    double result = calculator.kilogramsToPounds(kilograms);
+    resultLabel->SetLabel(wxString::Format("Pounds: %f", result));
+}
+
+void MainFrame::OnPoundsToKilograms(wxCommandEvent& event) {
+    double pounds;
+    inputA->GetValue().ToDouble(&pounds);
+    double result = calculator.poundsToKilograms(pounds);
+    resultLabel->SetLabel(wxString::Format("Kilograms: %f", result));
+}
