@@ -1,6 +1,6 @@
 > [!IMPORTANT]
-> GUI basis is completed. I just need to make it minimalisitcclean/whatever. Data Conversion. You also need
-> VS17 to build the exe from source.
+> GUI basis is completed. I just need to make it minimalisitc clean/whatever. Data Conversion. You also need
+> VS17 to build the exe from source. I also need to properly add the graphing logic since I was too lazy to do it before but it should be pretty simple.
 
 <p align="center"><img src="https://github.com/orangejuiceplz/smartCalc/blob/main/SmartCalculator.ico" height="200"></p>
 
