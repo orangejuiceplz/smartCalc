@@ -1,5 +1,6 @@
 > [!IMPORTANT]
-> GUI basis is completed. I just need to make it minimalisitcclean/whatever. API's FINALLY + Conversion
+> GUI basis is completed. I just need to make it minimalisitcclean/whatever. Data Conversion. You also need
+> VS17 to build the exe from source.
 
 <p align="center"><img src="https://github.com/orangejuiceplz/smartCalc/blob/main/SmartCalculator.ico" height="200"></p>
 
@@ -39,12 +40,11 @@ While py might seem like the obvious choice for such a project due to its simpli
 
 ## Getting setup with the calculator:
 
-In the build folder, if you're using VS17, just build the Release x64 solution. If not, use CMAKE.
+In the folder, if you're using VS17, just build the Release x64 solution. You actually need 
 
 Steps:
 
 Clone the repository
-Go into the build folder
 Double click SmartCalculator.sln (MUST HAVE VS17 (2022) INSTALLED)
 On the dropdown, click "Release".
 Make sure the Arch is set to x64.
@@ -54,9 +54,9 @@ Enjoy.
 
 ## Sidenotes
 
-> ## Reflections on the project so far.
+> ## Reflections on the project.
 
-Working on smartCalc for the short amount of time so far has been an incredibly ~~painful~~ amazing experience. From dealing with the complexities of C++ to integrating APIs for the first time, every challenge that I will encounter along the way has contributed to a deeper understanding of software development. Although I haven't really integrated the API features, the documentation seems easy to implement in the project.
+SmartCalc is something I have somewhat enjoyed working on. I'm also planning on using parts of the code for some logic in a couple other things that I am working on, such as my game I'm developing. I feel like it was just a good challenge to my C++ skills over a short amount of days, similar to like fizzbuzz but just longer. I also got to properely experiment with some new libraries that I wasn't exactly familar with, such as wxWidgets. I feel like I learned a lot from this project, even if most of it was just a refresher for me because I've done some C++ work before. I'm not exactly happy with how it looks and just works, it was probably just better to code my own library instead of having to create a whole bunch of classes for it, but oh well, I don't really care anyway.
 
 > ---
 >> if you're some random feel free to explore the code, contribute, or reach out if you're interested in making some suggestions
