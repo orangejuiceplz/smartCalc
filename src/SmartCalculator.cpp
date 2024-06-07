@@ -1,4 +1,10 @@
 #include "SmartCalculator.h"
+#include <curl/curl.h>
+#include "json.hpp"
+
+
+// this line is directly pulling from the hpp file at the root of the repo
+using json = nlohmann::json;
 
 double SmartCalculator::add(double a, double b) {
     return a + b;
@@ -207,4 +213,33 @@ double SmartCalculator::evaluateExpression(const std::string& expression, double
         return sine(x);
     }
     return 0.0;
+}
+
+double SmartCalculator::convertCurrency(double amount, const std::string& fromCurrency, const std::string& toCurrency) {
+    std::string apiKey = "458SN091K4TWP4OX";
+    std::string url = "https://www.alphavantage.co/query?function=CURRENCY_EXCHANGE_RATE&from_currency=" + fromCurrency + "&to_currency=" + toCurrency + "&apikey=" + apiKey;
+
+    CURL* curl = curl_easy_init();
+    if (curl) {
+        std::string response;
+        curl_easy_setopt(curl, CURLOPT_URL, url.c_str());
+        curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, WriteCallback);
+        curl_easy_setopt(curl, CURLOPT_WRITEDATA, &response);
+        CURLcode res = curl_easy_perform(curl);
+        curl_easy_cleanup(curl);
+
+        if (res == CURLE_OK) {
+            json jsonData = json::parse(response);
+            std::string exchangeRateStr = jsonData["Realtime Currency Exchange Rate"]["5. Exchange Rate"];
+            double exchangeRate = std::stod(exchangeRateStr);
+            return amount * exchangeRate;
+        }
+    }
+
+    return 0.0;
+}
+
+static size_t WriteCallback(void* contents, size_t size, size_t nmemb, void* userp) {
+    ((std::string*)userp)->append((char*)contents, size * nmemb);
+    return size * nmemb;
 }

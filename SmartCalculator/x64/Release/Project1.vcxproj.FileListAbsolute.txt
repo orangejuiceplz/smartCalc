@@ -1,0 +1,3 @@
+C:\Users\shive\source\repos\Project1\x64\Release\libcurl.dll
+C:\Users\shive\source\repos\Project1\x64\Release\zlib1.dll
+C:\Users\shive\source\repos\Project1\Project1\x64\Release\Project1.vcxproj.Up2Date

@@ -1,0 +1,10 @@
+﻿  main.cpp
+  SmartCalculator.cpp
+  Generating code
+  1340 of 2245 functions (59.7%) were compiled, the rest were copied from previous compilation.
+    1117 functions were new in current compilation
+    71 functions had inline decision re-evaluated but remain unchanged
+  Finished generating code
+  Project1.vcxproj -> C:\Users\shive\source\repos\Project1\x64\Release\Project1.exe
+  'pwsh.exe' is not recognized as an internal or external command,
+  operable program or batch file.
