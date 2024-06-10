@@ -1,7 +1,7 @@
 #include "SmartCalculator.h"
 #include <curl/curl.h>
 #include "json.hpp"
-
+#include <iostream>
 
 // this line is directly pulling from the hpp file at the root of the repo
 using json = nlohmann::json;
@@ -205,14 +205,7 @@ double SmartCalculator::arcLengthCircle(double r, double centralAngleInDegrees) 
 }
 
 void SmartCalculator::graphFunction() {
-    // already implemented
-}
-
-double SmartCalculator::evaluateExpression(const std::string& expression, double x) {
-    if (expression == "sin(x)") {
-        return sine(x);
-    }
-    return 0.0;
+    // Implementation for graphing function
 }
 
 double SmartCalculator::convertCurrency(double amount, const std::string& fromCurrency, const std::string& toCurrency) {
@@ -237,6 +230,60 @@ double SmartCalculator::convertCurrency(double amount, const std::string& fromCu
     }
 
     return 0.0;
+}
+
+std::string SmartCalculator::intToBinary(int n) {
+    std::string binary;
+    while (n > 0) {
+        binary = (n % 2 == 0 ? "0" : "1") + binary;
+        n /= 2;
+    }
+    return binary.empty() ? "0" : binary;
+}
+
+std::string SmartCalculator::intToHex(int n) {
+    std::stringstream ss;
+    ss << std::hex << n;
+    return ss.str();
+}
+
+int SmartCalculator::binaryToInt(const std::string& binary) {
+    return std::stoi(binary, nullptr, 2);
+}
+
+int SmartCalculator::hexToInt(const std::string& hex) {
+    return std::stoi(hex, nullptr, 16);
+}
+
+// Unit Conversions
+double SmartCalculator::celsiusToFahrenheit(double celsius) {
+    return (celsius * 9.0 / 5.0) + 32.0;
+}
+
+double SmartCalculator::fahrenheitToCelsius(double fahrenheit) {
+    return (fahrenheit - 32.0) * 5.0 / 9.0;
+}
+
+double SmartCalculator::metersToFeet(double meters) {
+    return meters * 3.28084;
+}
+
+double SmartCalculator::feetToMeters(double feet) {
+    return feet / 3.28084;
+}
+
+double SmartCalculator::kilogramsToPounds(double kilograms) {
+    return kilograms * 2.20462;
+}
+
+double SmartCalculator::poundsToKilograms(double pounds) {
+    return pounds / 2.20462;
+}
+
+double SmartCalculator::evaluateExpression(const std::wstring& expression, double x) {
+    // Implement expression evaluation logic here
+    // This is a placeholder implementation
+    return std::sin(x); // Example: replace with actual expression evaluation
 }
 
 static size_t WriteCallback(void* contents, size_t size, size_t nmemb, void* userp) {
