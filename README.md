@@ -1,6 +1,6 @@
 > [!IMPORTANT]
-> GUI basis is completed. I just need to make it minimalisitc clean/whatever. Data Conversion nd currency conversion added. You also need
-> VS17 to build the exe from source. I also need to properly add the graphing logic since I was too lazy to do it before but it should be pretty simple.
+> This project will not be updated anytime soon as the core fucntionality is fine as is.
+> I will continue to work on other things in the meantime.
 
 <p align="center"><img src="https://github.com/orangejuiceplz/smartCalc/blob/main/SmartCalculator.ico" height="200"></p>
 
