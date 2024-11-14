@@ -280,12 +280,6 @@ double SmartCalculator::poundsToKilograms(double pounds) {
     return pounds / 2.20462;
 }
 
-double SmartCalculator::evaluateExpression(const std::wstring& expression, double x) {
-    // Implement expression evaluation logic here
-    // This is a placeholder implementation
-    return std::sin(x); // Example: replace with actual expression evaluation
-}
-
 static size_t WriteCallback(void* contents, size_t size, size_t nmemb, void* userp) {
     ((std::string*)userp)->append((char*)contents, size * nmemb);
     return size * nmemb;

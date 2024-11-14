@@ -434,11 +434,7 @@ MainFrame::MainFrame(const wxString& title)
     dataConversionsLabel->SetForegroundColour(wxColour(255, 255, 255));
     dataConversionsLabel->SetFont(font);
     vbox->Add(dataConversionsLabel, 0, wxALIGN_CENTER | wxTOP | wxBOTTOM, 10);
-    wxButton* btnGraph = new wxButton(panel, ID_Graph, "Graph", wxDefaultPosition, wxDefaultSize, wxBORDER_NONE);
-    btnGraph->SetBackgroundColour(wxColour(64, 64, 64));
-    btnGraph->SetForegroundColour(wxColour(255, 255, 255));
-    btnGraph->SetFont(font);
-    miscGridSizer->Add(btnGraph, 1, wxEXPAND);
+
     wxGridSizer* dataConversionsGridSizer = new wxGridSizer(2, 2, 5, 5);
     wxButton* btnIntToBinary = new wxButton(panel, ID_IntToBinary, "Int to Binary", wxDefaultPosition, wxDefaultSize, wxBORDER_NONE);
     btnIntToBinary->SetBackgroundColour(wxColour(64, 64, 64));
@@ -840,19 +836,6 @@ void MainFrame::OnIntToBinary(wxCommandEvent& event) {
     inputA->GetValue().ToLong(&n);
     std::string result = calculator.intToBinary(n);
     resultLabel->SetLabel(wxString::Format("Binary: %s", result));
-}
-
-void MainFrame::OnIntToHex(wxCommandEvent& event) {
-    long n;
-    inputA->GetValue().ToLong(&n);
-    std::string result = calculator.intToHex(n);
-    resultLabel->SetLabel(wxString::Format("Hex: %s", result));
-}
-
-void MainFrame::OnBinaryToInt(wxCommandEvent& event) {
-    wxString binary = inputA->GetValue();
-    int result = calculator.binaryToInt(binary.ToStdString());
-    resultLabel->SetLabel(wxString::Format("Integer: %d", result));
 }
 
 void MainFrame::OnHexToInt(wxCommandEvent& event) {

@@ -62,7 +62,7 @@ public:
     double feetToMeters(double feet);
     double kilogramsToPounds(double kilograms);
     double poundsToKilograms(double pounds);
-    double evaluateExpression(const std::wstring& expression, double x);
+
 };
 
 // Declare the WriteCallback function
