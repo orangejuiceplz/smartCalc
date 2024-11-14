@@ -1,6 +1,7 @@
 > [!IMPORTANT]
-> GUI basis is completed. I just need to make it minimalisitc clean/whatever. Data Conversion. You also need
-> VS17 to build the exe from source. I also need to properly add the graphing logic since I was too lazy to do it before but it should be pretty simple.
+
+> This project will not be updated anytime soon as the core fucntionality is fine as is.
+> I will continue to work on other things in the meantime.
 
 <p align="center"><img src="https://github.com/orangejuiceplz/smartCalc/blob/main/SmartCalculator.ico" height="200"></p>
 
@@ -34,9 +35,9 @@ While py might seem like the obvious choice for such a project due to its simpli
 |  6  | I'm going to test headerfiles again. I think after reading up a lot more on the documentation, I think I can probably successfully link these files without any issues. CMake GUI should make it a whole lot easier since I really don't like terminals (even though I have arch linux). So rightnow I've created a new branch called 'dev' or something which will slowly document all of these changes. Other than that, not a whole lot of progress. I guess I am starting to slowly convert everything to a GUI function instead of CLI. I- think I can do this with the short amount of time I have left. API's may be truncated in the worst case scenario.     |
 |  7  | Good news is that everything worked as expected. Code compiled and everything and I'm a very happy person. One issue, though. I had to switch from using VSC to using VS. Its not ideal, and I do like using VSC as my primary code editor, followed by neovim (and vim ofc), but it gets the job done faster and I only really have to configure one time. Thats great. I added all of the GUI featurse for what methods I have right now in my files, so thats good. The UI looks really bad though, and I'm dissapointed with myself that I made something that bad (to be fair, it is my first time using wxWidgets so my UI knowledge with this library is pretty scarce.           |
 |  8  | I haven't done a whole lot to pretty up the GUI's. I'll be okay so its fine. I managed to add currency conversion so we don't have to cut that. I will just add better graphing logic and finish unit conversions. Not a whole lot today, I'll do the GUI stuff when I get home so I can see the changes in real time. I will also use NSIS now to actually get a distributable exe or just use whatever visual studio has in their arsenal.      |
-|  9  |          |
-| 10  |          |
-| 11  |          |
+|  9  | No longer in use         |
+| 10  | No longer in use         |
+| 11  | No longer in use         |
 
 ## Getting setup with the calculator:
 

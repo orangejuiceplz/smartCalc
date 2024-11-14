@@ -2,6 +2,10 @@
 #include <wx/tokenzr.h>
 #include "SmartCalculator.h"
 #include <wx/statline.h>
+#include <locale>
+#include <codecvt>
+#include "GraphPanel.h"
+
 
 class MyPanel : public wxPanel {
 public:
@@ -583,37 +587,8 @@ void MainFrame::OnGraph(wxCommandEvent& event) {
     wxString function = wxGetTextFromUser("Enter the function to graph (e.g., sin(x)):", "Graph Function");
     if (!function.IsEmpty()) {
         wxFrame* graphFrame = new wxFrame(this, wxID_ANY, "Graph", wxDefaultPosition, wxSize(800, 600));
-        wxPanel* graphPanel = new wxPanel(graphFrame, wxID_ANY);
+        GraphPanel* graphPanel = new GraphPanel(graphFrame, function.ToStdString());
         graphFrame->Show(true);
-
-        wxClientDC dc(graphPanel);
-        dc.SetPen(*wxBLACK_PEN);
-
-        int width, height;
-        graphPanel->GetClientSize(&width, &height);
-
-        double xMin = -10.0;
-        double xMax = 10.0;
-        double yMin = -10.0;
-        double yMax = 10.0;
-
-        // Draw x-axis
-        dc.DrawLine(0, height / 2, width, height / 2);
-
-        // Draw y-axis
-        dc.DrawLine(width / 2, 0, width / 2, height);
-
-        // Draw graph
-        dc.SetPen(wxPen(wxColour(255, 0, 0)));
-        wxPointList* points = new wxPointList();
-        for (int x = 0; x < width; ++x) {
-            double xCoord = xMin + (xMax - xMin) * x / width;
-            double yCoord = calculator.evaluateExpression(function.ToStdString(), xCoord);
-            double yPixel = height - (yCoord - yMin) * height / (yMax - yMin);
-            points->Append(new wxPoint(x, yPixel));
-        }
-        dc.DrawLines(points);
-        delete points;
     }
 }
 
@@ -861,19 +836,6 @@ void MainFrame::OnIntToBinary(wxCommandEvent& event) {
     inputA->GetValue().ToLong(&n);
     std::string result = calculator.intToBinary(n);
     resultLabel->SetLabel(wxString::Format("Binary: %s", result));
-}
-
-void MainFrame::OnIntToHex(wxCommandEvent& event) {
-    long n;
-    inputA->GetValue().ToLong(&n);
-    std::string result = calculator.intToHex(n);
-    resultLabel->SetLabel(wxString::Format("Hex: %s", result));
-}
-
-void MainFrame::OnBinaryToInt(wxCommandEvent& event) {
-    wxString binary = inputA->GetValue();
-    int result = calculator.binaryToInt(binary.ToStdString());
-    resultLabel->SetLabel(wxString::Format("Integer: %d", result));
 }
 
 void MainFrame::OnHexToInt(wxCommandEvent& event) {

@@ -1,7 +1,7 @@
 #include "SmartCalculator.h"
 #include <curl/curl.h>
 #include "json.hpp"
-
+#include <iostream>
 
 // this line is directly pulling from the hpp file at the root of the repo
 using json = nlohmann::json;
@@ -205,14 +205,7 @@ double SmartCalculator::arcLengthCircle(double r, double centralAngleInDegrees) 
 }
 
 void SmartCalculator::graphFunction() {
-    // already implemented
-}
-
-double SmartCalculator::evaluateExpression(const std::string& expression, double x) {
-    if (expression == "sin(x)") {
-        return sine(x);
-    }
-    return 0.0;
+    // Implementation for graphing function
 }
 
 double SmartCalculator::convertCurrency(double amount, const std::string& fromCurrency, const std::string& toCurrency) {
